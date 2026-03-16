@@ -443,6 +443,151 @@
       word-break: keep-all;
     }
 
+    .app-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .map-panel {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 20% 24%, rgba(49, 130, 246, 0.18) 0 36px, transparent 37px),
+        radial-gradient(circle at 76% 32%, rgba(49, 130, 246, 0.14) 0 28px, transparent 29px),
+        radial-gradient(circle at 52% 70%, rgba(49, 130, 246, 0.14) 0 34px, transparent 35px),
+        linear-gradient(180deg, #f4f8fc 0%, #edf3f8 100%);
+      border: 1px solid #dde7f0;
+    }
+
+    .map-grid {
+      position: relative;
+      height: 200px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(157, 180, 199, 0.28) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(rgba(157, 180, 199, 0.28) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(135deg, #fdfefe 0%, #eef5ff 100%);
+    }
+
+    .map-grid::before,
+    .map-grid::after {
+      content: "";
+      position: absolute;
+      background: rgba(37, 99, 235, 0.14);
+      border-radius: 999px;
+    }
+
+    .map-grid::before {
+      width: 220px;
+      height: 14px;
+      top: 34px;
+      left: -18px;
+      transform: rotate(18deg);
+    }
+
+    .map-grid::after {
+      width: 260px;
+      height: 16px;
+      bottom: 34px;
+      right: -28px;
+      transform: rotate(-24deg);
+    }
+
+    .map-pin {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50% 50% 50% 0;
+      background: #1b64da;
+      transform: rotate(-45deg);
+      box-shadow: 0 10px 22px rgba(27, 100, 218, 0.28);
+    }
+
+    .map-pin::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .place-sheet {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .place-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .place-header h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+    }
+
+    .place-meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .place-rating {
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: #f7fbff;
+      color: var(--primary-strong);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .review-feed {
+      display: grid;
+      gap: 12px;
+    }
+
+    .review-row {
+      padding: 16px;
+      border-radius: 18px;
+      background: #f9fbfd;
+      border: 1px solid #ebf0f5;
+    }
+
+    .review-row-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .review-row strong {
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .review-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
     .two-column {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -724,6 +869,7 @@
 
       .hero-grid,
       .two-column,
+      .app-showcase,
       .feature-grid,
       .audience-grid,
       .kpi-grid {
@@ -1017,126 +1163,75 @@
 
     <section>
       <div class="container">
-        <p class="section-label">초기 타겟 고객</p>
+        <p class="section-label">앱 화면</p>
         <h2 class="section-title">
-          처음에는 이런 사용자에게
+          후일담은 지도에서 보고
           <br />
-          가장 잘 맞습니다
+          바로 리뷰까지 이어집니다
         </h2>
         <p class="section-copy">
-          사업계획서의 초기 타겟 고객 가설을 반영해, 가장 문제를 크게 느끼는 사용자 중심으로 설계했습니다.
+          지도에서 장소를 고르고, 아래에서 해당 음식점의 핵심 리뷰를 바로 확인할 수 있게 구성했습니다.
         </p>
 
-        <div class="audience-grid">
-          <article class="audience-card">
-            <h3>처음 가는 장소에서 실패하고 싶지 않은 사람</h3>
-            <p>방문 전에 꼭 알아야 할 리스크를 먼저 보고 싶어하는 사용자입니다.</p>
-          </article>
-
-          <article class="audience-card">
-            <h3>광고성 리뷰에 피로를 느끼는 사람</h3>
-            <p>과장된 칭찬보다 실제 경험 중심의 짧은 요약을 선호하는 사용자입니다.</p>
-          </article>
-
-          <article class="audience-card">
-            <h3>자기 기준으로 장소를 고르는 사람</h3>
-            <p>대기 시간, 소음, 청결처럼 개인 기준이 분명한 사용자에게 잘 맞습니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <p class="section-label">최종 핵심 지표</p>
-        <h2 class="section-title">
-          복잡한 설명보다
-          <br />
-          검증해야 할 숫자가 먼저입니다
-        </h2>
-        <p class="section-copy">
-          사업계획서의 KPI 흐름에 맞춰, 초기에는 실제 사용과 재방문 가능성을 빠르게 확인하는 데 집중합니다.
-        </p>
-
-        <div class="kpi-grid">
-          <article class="kpi-card">
-            <strong>핵심</strong>
-            <h3>첫 방문 전 탐색 시간 단축</h3>
-            <p>사용자가 길게 읽지 않고도 빠르게 판단하는 경험이 실제로 만들어지는지 확인합니다.</p>
-          </article>
-          <article class="kpi-card">
-            <strong>초기</strong>
-            <h3>타겟 고객의 반복 사용</h3>
-            <p>문제를 크게 느끼는 초기 고객이 다시 찾는 서비스인지 검증합니다.</p>
-          </article>
-          <article class="kpi-card">
-            <strong>확장</strong>
-            <h3>리뷰 데이터 신뢰도 축적</h3>
-            <p>반복되는 불편 패턴이 쌓일수록 서비스 가치가 커지는 구조를 만듭니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container two-column">
-        <div class="info-card">
-          <span class="card-kicker">확장 전략</span>
-          <h3>하나의 리뷰 화면에서 끝나지 않고, 판단 인프라로 확장합니다</h3>
-          <p>
-            먼저 장소 리뷰에서 시작하고, 이후에는 더 다양한 생활 선택 영역으로 확장할 수 있는 구조를 만듭니다.
-          </p>
-          <div class="list">
-            <div class="list-item">
-              <div class="list-badge">1</div>
-              <div>
-                <strong>장소 선택</strong>
-                <span>카페, 식당, 공간 방문 전 리스크 확인</span>
-              </div>
-            </div>
-            <div class="list-item">
-              <div class="list-badge">2</div>
-              <div>
-                <strong>카테고리 확장</strong>
-                <span>숙박, 병원, 서비스 등 더 넓은 의사결정 영역으로 연결</span>
-              </div>
-            </div>
-            <div class="list-item">
-              <div class="list-badge">3</div>
-              <div>
-                <strong>데이터 자산화</strong>
-                <span>반복되는 불편 데이터를 신뢰 가능한 선택 정보로 축적</span>
-              </div>
-            </div>
+        <div class="app-showcase">
+          <div class="quote-block">
+            <h2>지도와 리뷰를 한 화면에서 보게 하면, 방문 전 판단이 더 빨라집니다</h2>
+            <p>
+              어디에 있는지 확인한 뒤 다시 리뷰 목록을 찾지 않도록, 선택한 음식점의 정보와 리뷰를 한 흐름으로 연결했습니다.
+            </p>
           </div>
-        </div>
 
-        <div class="info-card">
-          <span class="card-kicker">수익 흐름</span>
-          <h3>사용자에게는 더 정확한 정보, 사업에는 명확한 수익 구조</h3>
-          <p>
-            사업계획서의 수익 흐름 방향에 맞춰, 신뢰를 해치지 않는 방식으로 수익화를 설계합니다.
-          </p>
-          <div class="list">
-            <div class="list-item">
-              <div class="list-badge">A</div>
-              <div>
-                <strong>프리미엄 정보 경험</strong>
-                <span>더 깊은 비교와 정리 기능을 원하는 사용자 대상</span>
+          <div class="device" aria-hidden="true">
+            <div class="screen">
+              <div class="screen-header">
+                <div class="screen-title">후일담 지도</div>
+                <div class="screen-chip">식당 상세</div>
               </div>
-            </div>
-            <div class="list-item">
-              <div class="list-badge">B</div>
-              <div>
-                <strong>제휴 기반 노출</strong>
-                <span>광고처럼 보이지 않도록 신뢰 기준을 지키는 구조</span>
+              <div class="search">성수동 파스타 맛집, 대기와 소음 먼저 보기</div>
+
+              <div class="map-panel">
+                <div class="map-grid">
+                  <span class="map-pin" style="top: 26%; left: 22%;"></span>
+                  <span class="map-pin" style="top: 52%; left: 58%;"></span>
+                  <span class="map-pin" style="top: 38%; left: 72%;"></span>
+                  <span class="map-pin" style="top: 60%; left: 36%;"></span>
+                </div>
               </div>
-            </div>
-            <div class="list-item">
-              <div class="list-badge">C</div>
-              <div>
-                <strong>데이터 확장 가능성</strong>
-                <span>축적된 리뷰 인사이트를 다양한 서비스와 연결</span>
+
+              <div class="place-sheet">
+                <div class="place-header">
+                  <div>
+                    <h3>몽테이블 성수점</h3>
+                    <div class="place-meta">서울 성동구 성수이로14길 9 · 도보 4분 · 저장 1.2천</div>
+                  </div>
+                  <div class="place-rating">4.2 / 5</div>
+                </div>
+
+                <div class="review-feed">
+                  <article class="review-row">
+                    <div class="review-row-top">
+                      <strong>점심시간 대기가 긴 편</strong>
+                      <span class="tag tag-red">대기</span>
+                    </div>
+                    <p>12시 10분 이후에는 웨이팅이 빠르게 늘어난다는 리뷰가 반복됩니다.</p>
+                  </article>
+
+                  <article class="review-row">
+                    <div class="review-row-top">
+                      <strong>테이블 간격이 좁아 대화 소음이 있음</strong>
+                      <span class="tag tag-blue">소음</span>
+                    </div>
+                    <p>조용한 식사를 기대하면 저녁 피크 시간은 피하는 편이 낫다는 의견이 많습니다.</p>
+                  </article>
+
+                  <article class="review-row">
+                    <div class="review-row-top">
+                      <strong>음식은 빠르게 나오지만 좌석 회전이 빠름</strong>
+                      <span class="tag tag-green">요약</span>
+                    </div>
+                    <p>혼잡 시간에는 오래 머물기보다 빠르게 식사하고 나오는 장소라는 평가가 많습니다.</p>
+                  </article>
+                </div>
               </div>
             </div>
           </div>
