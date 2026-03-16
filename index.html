@@ -234,7 +234,7 @@
 
     .device {
       position: relative;
-      width: min(100%, 320px);
+      width: min(100%, 356px);
       margin-left: auto;
       margin-right: auto;
       padding: 14px;
@@ -279,7 +279,7 @@
       background:
         radial-gradient(circle at top, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0) 28%),
         linear-gradient(180deg, #f9fbfd 0%, #eef3f6 100%);
-      min-height: 520px;
+      min-height: 548px;
       border: 1px solid #e7edf2;
     }
 
@@ -460,8 +460,10 @@
     }
 
     .map-panel {
+      position: relative;
+      z-index: 4;
       margin-top: 14px;
-      padding: 10px 10px 34px;
+      padding: 12px 12px 28px;
       border-radius: 24px;
       background: linear-gradient(180deg, #e9f0f4 0%, #dde7ec 100%);
       border: 1px solid #d4e0e7;
@@ -470,7 +472,7 @@
 
     .map-grid {
       position: relative;
-      height: 196px;
+      height: 218px;
       border-radius: 18px;
       overflow: hidden;
       background:
@@ -536,8 +538,8 @@
     .map-pin {
       position: absolute;
       z-index: 2;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       padding: 0;
       border: 0;
       border-radius: 50% 50% 50% 0;
@@ -571,8 +573,8 @@
     .place-sheet {
       position: relative;
       z-index: 3;
-      margin-top: -22px;
-      padding: 14px;
+      margin-top: -14px;
+      padding: 16px;
       border-radius: 26px 26px 22px 22px;
       background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(223, 231, 238, 0.9);
@@ -602,7 +604,7 @@
 
     .place-header h3 {
       margin: 0;
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.3;
       letter-spacing: -0.03em;
     }
@@ -610,27 +612,27 @@
     .place-meta {
       margin-top: 4px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 13px;
       line-height: 1.5;
     }
 
     .place-rating {
-      padding: 8px 10px;
+      padding: 9px 11px;
       border-radius: 14px;
       background: #f7fbff;
       color: var(--primary-strong);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
       white-space: nowrap;
     }
 
     .review-feed {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
     .review-row {
-      padding: 12px;
+      padding: 13px;
       border-radius: 16px;
       background: rgba(247, 250, 252, 0.92);
       border: 1px solid #ebf0f5;
@@ -645,15 +647,15 @@
     }
 
     .review-row strong {
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: -0.02em;
     }
 
     .review-row p {
       margin: 0;
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.55;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     .two-column {
@@ -945,7 +947,7 @@
       }
 
       .device {
-        max-width: 320px;
+        max-width: 356px;
         margin: 0 auto;
       }
     }
