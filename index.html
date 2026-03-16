@@ -479,6 +479,7 @@
       position: absolute;
       background: rgba(37, 99, 235, 0.14);
       border-radius: 999px;
+      pointer-events: none;
     }
 
     .map-grid::before {
@@ -499,6 +500,7 @@
 
     .map-pin {
       position: absolute;
+      z-index: 2;
       width: 18px;
       height: 18px;
       padding: 0;
@@ -1114,10 +1116,10 @@
         <h2 class="section-title">
           후일담은 지도에서 보고
           <br />
-          바로 리뷰까지 이어집니다
+          여러 식당 리뷰를 바로 확인합니다
         </h2>
         <p class="section-copy">
-          지도에서 장소를 고르고, 아래에서 해당 음식점의 핵심 리뷰를 바로 확인할 수 있게 구성했습니다.
+          랜딩 페이지 안에서 식당 핀을 직접 누르면, 아래에서 해당 식당의 핵심 리뷰가 바로 바뀌도록 구성했습니다.
         </p>
 
         <div class="app-showcase">
@@ -1134,7 +1136,7 @@
                 <div class="screen-title">후일담 지도</div>
                 <div class="screen-chip">식당 상세</div>
               </div>
-              <div class="search">성수동 파스타 맛집, 대기와 소음 먼저 보기</div>
+              <div class="search">지도에서 식당을 누르고 대기, 소음, 응대 리뷰를 바로 보기</div>
 
               <div class="map-panel">
                 <div class="map-grid">
