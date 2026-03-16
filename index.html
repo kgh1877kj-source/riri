@@ -501,10 +501,14 @@
       position: absolute;
       width: 18px;
       height: 18px;
+      padding: 0;
+      border: 0;
       border-radius: 50% 50% 50% 0;
       background: #1b64da;
       transform: rotate(-45deg);
       box-shadow: 0 10px 22px rgba(27, 100, 218, 0.28);
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
     }
 
     .map-pin::after {
@@ -513,6 +517,18 @@
       inset: 4px;
       border-radius: 50%;
       background: #ffffff;
+    }
+
+    .map-pin:hover,
+    .map-pin.is-active {
+      background: #0f52c8;
+      box-shadow: 0 14px 28px rgba(27, 100, 218, 0.34);
+      transform: rotate(-45deg) scale(1.1);
+    }
+
+    .map-pin:focus-visible {
+      outline: 3px solid rgba(49, 130, 246, 0.32);
+      outline-offset: 4px;
     }
 
     .place-sheet {
@@ -942,8 +958,6 @@
     <div class="container nav">
       <a href="#" class="brand">후일담</a>
       <nav class="nav-links">
-        <a href="#problem">문제</a>
-        <a href="#solution">해결 방식</a>
         <a href="#features">핵심 기능</a>
         <a href="#download">시작하기</a>
       </nav>
@@ -1049,73 +1063,6 @@
       </div>
     </section>
 
-    <section id="problem">
-      <div class="container two-column">
-        <div class="info-card">
-          <span class="card-kicker">문제 정의</span>
-          <h3>리뷰는 많지만, 실패를 줄여주는 정보는 잘 보이지 않습니다</h3>
-          <p>
-            평점은 높아도 실제로 불편한 지점은 리뷰 사이에 흩어져 있습니다.
-            사용자는 가기 전에 알아야 할 정보를 찾기 위해 너무 많은 시간을 씁니다.
-          </p>
-          <div class="list">
-            <div class="list-item">
-              <div class="list-badge">1</div>
-              <div>
-                <strong>광고성 후기 비중이 높습니다</strong>
-                <span>좋은 말이 반복되면 실제 문제는 더 가려집니다.</span>
-              </div>
-            </div>
-            <div class="list-item">
-              <div class="list-badge">2</div>
-              <div>
-                <strong>핵심 불편이 흩어져 있습니다</strong>
-                <span>대기, 소음, 청결, 응대 정보가 한눈에 정리되지 않습니다.</span>
-              </div>
-            </div>
-            <div class="list-item">
-              <div class="list-badge">3</div>
-              <div>
-                <strong>방문 결정이 어렵습니다</strong>
-                <span>정말 가도 될지 판단하려면 리뷰를 너무 오래 읽어야 합니다.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card" id="solution">
-          <span class="card-kicker">솔루션 제안</span>
-          <h3>후일담은 한눈에 판단하게 만듭니다</h3>
-          <p>
-            필요한 정보만 짧게 남기고, 방문 전에 바로 판단할 수 있게 돕습니다.
-          </p>
-          <div class="solution-points">
-            <div class="solution-point">
-              <div class="solution-icon">📍</div>
-              <div>
-                <strong>장소별 핵심 요약</strong>
-                <span>어디가 불편한지 먼저 보여줍니다.</span>
-              </div>
-            </div>
-            <div class="solution-point">
-              <div class="solution-icon">🧹</div>
-              <div>
-                <strong>반복 리뷰 정리</strong>
-                <span>비슷한 말은 줄이고 핵심만 남깁니다.</span>
-              </div>
-            </div>
-            <div class="solution-point">
-              <div class="solution-icon">⚡</div>
-              <div>
-                <strong>빠른 결정</strong>
-                <span>길게 읽지 않아도 가도 될지 알 수 있습니다.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="features">
       <div class="container">
         <p class="section-label">핵심 기능</p>
@@ -1181,7 +1128,7 @@
             </p>
           </div>
 
-          <div class="device" aria-hidden="true">
+          <div class="device">
             <div class="screen">
               <div class="screen-header">
                 <div class="screen-title">후일담 지도</div>
@@ -1191,45 +1138,105 @@
 
               <div class="map-panel">
                 <div class="map-grid">
-                  <span class="map-pin" style="top: 26%; left: 22%;"></span>
-                  <span class="map-pin" style="top: 52%; left: 58%;"></span>
-                  <span class="map-pin" style="top: 38%; left: 72%;"></span>
-                  <span class="map-pin" style="top: 60%; left: 36%;"></span>
+                  <button class="map-pin is-active" type="button" style="top: 26%; left: 22%;" aria-label="몽테이블 성수점 리뷰 보기"
+                    data-place="몽테이블 성수점"
+                    data-meta="서울 성동구 성수이로14길 9 · 도보 4분 · 저장 1.2천"
+                    data-rating="4.2 / 5"
+                    data-review1-title="점심시간 대기가 긴 편"
+                    data-review1-tag="대기"
+                    data-review1-tag-class="tag-red"
+                    data-review1-body="12시 10분 이후에는 웨이팅이 빠르게 늘어난다는 리뷰가 반복됩니다."
+                    data-review2-title="테이블 간격이 좁아 대화 소음이 있음"
+                    data-review2-tag="소음"
+                    data-review2-tag-class="tag-blue"
+                    data-review2-body="조용한 식사를 기대하면 저녁 피크 시간은 피하는 편이 낫다는 의견이 많습니다."
+                    data-review3-title="음식은 빠르게 나오지만 좌석 회전이 빠름"
+                    data-review3-tag="요약"
+                    data-review3-tag-class="tag-green"
+                    data-review3-body="혼잡 시간에는 오래 머물기보다 빠르게 식사하고 나오는 장소라는 평가가 많습니다."></button>
+                  <button class="map-pin" type="button" style="top: 52%; left: 58%;" aria-label="오르베 성수 리뷰 보기"
+                    data-place="오르베 성수"
+                    data-meta="서울 성동구 연무장길 18 · 도보 6분 · 저장 980"
+                    data-rating="4.5 / 5"
+                    data-review1-title="브런치 시간대 좌석 회전이 느림"
+                    data-review1-tag="대기"
+                    data-review1-tag-class="tag-red"
+                    data-review1-body="주말 오전 11시 이후에는 대기줄이 길어지고 입장까지 시간이 걸린다는 후기가 많습니다."
+                    data-review2-title="창가 자리는 밝지만 내부 음악이 큰 편"
+                    data-review2-tag="소음"
+                    data-review2-tag-class="tag-blue"
+                    data-review2-body="대화 위주의 식사보다는 가볍게 머무는 분위기에 가깝다는 의견이 반복됩니다."
+                    data-review3-title="플레이트 만족도는 높지만 체류 시간은 짧음"
+                    data-review3-tag="요약"
+                    data-review3-tag-class="tag-green"
+                    data-review3-body="사진 찍기 좋고 음식 평은 좋지만, 피크 시간에는 천천히 머무르기 어렵다는 평가가 많습니다."></button>
+                  <button class="map-pin" type="button" style="top: 38%; left: 72%;" aria-label="유월 리뷰 보기"
+                    data-place="유월"
+                    data-meta="서울 성동구 서울숲2길 31 · 도보 8분 · 저장 760"
+                    data-rating="4.1 / 5"
+                    data-review1-title="저녁 시간 웨이팅 편차가 큼"
+                    data-review1-tag="대기"
+                    data-review1-tag-class="tag-red"
+                    data-review1-body="평일과 주말 대기 차이가 커서 방문 시간대 확인이 중요하다는 리뷰가 자주 보입니다."
+                    data-review2-title="테이블 간격은 넓지만 직원 호출 응답이 느릴 때가 있음"
+                    data-review2-tag="응대"
+                    data-review2-tag-class="tag-blue"
+                    data-review2-body="한가한 시간에는 괜찮지만 피크 타임에는 주문 확인이 늦어진다는 의견이 있습니다."
+                    data-review3-title="분위기는 편안하지만 피크 타임 변동성이 큼"
+                    data-review3-tag="요약"
+                    data-review3-tag-class="tag-green"
+                    data-review3-body="재방문 평가는 좋지만, 방문 시간에 따라 체감 만족도가 달라진다는 후기가 반복됩니다."></button>
+                  <button class="map-pin" type="button" style="top: 60%; left: 36%;" aria-label="페이브 리뷰 보기"
+                    data-place="페이브"
+                    data-meta="서울 성동구 왕십리로14길 12 · 도보 5분 · 저장 640"
+                    data-rating="4.0 / 5"
+                    data-review1-title="점심 직전부터 대기가 생김"
+                    data-review1-tag="대기"
+                    data-review1-tag-class="tag-red"
+                    data-review1-body="오픈 직후는 여유롭지만 11시 40분 이후부터는 좌석이 빠르게 찬다는 후기가 많습니다."
+                    data-review2-title="매장 규모가 작아 주변 대화가 들리는 편"
+                    data-review2-tag="소음"
+                    data-review2-tag-class="tag-blue"
+                    data-review2-body="조용한 미팅보다는 짧게 식사하거나 혼밥하기에 더 잘 맞는다는 의견이 많습니다."
+                    data-review3-title="메뉴 만족도는 안정적이고 회전은 빠름"
+                    data-review3-tag="요약"
+                    data-review3-tag-class="tag-green"
+                    data-review3-body="줄은 있지만 주문과 식사 흐름은 빨라서 오래 기다리는 느낌은 덜하다는 평가가 있습니다."></button>
                 </div>
               </div>
 
               <div class="place-sheet">
                 <div class="place-header">
                   <div>
-                    <h3>몽테이블 성수점</h3>
-                    <div class="place-meta">서울 성동구 성수이로14길 9 · 도보 4분 · 저장 1.2천</div>
+                    <h3 id="place-name">몽테이블 성수점</h3>
+                    <div class="place-meta" id="place-meta">서울 성동구 성수이로14길 9 · 도보 4분 · 저장 1.2천</div>
                   </div>
-                  <div class="place-rating">4.2 / 5</div>
+                  <div class="place-rating" id="place-rating">4.2 / 5</div>
                 </div>
 
                 <div class="review-feed">
                   <article class="review-row">
                     <div class="review-row-top">
-                      <strong>점심시간 대기가 긴 편</strong>
-                      <span class="tag tag-red">대기</span>
+                      <strong id="review1-title">점심시간 대기가 긴 편</strong>
+                      <span class="tag tag-red" id="review1-tag">대기</span>
                     </div>
-                    <p>12시 10분 이후에는 웨이팅이 빠르게 늘어난다는 리뷰가 반복됩니다.</p>
+                    <p id="review1-body">12시 10분 이후에는 웨이팅이 빠르게 늘어난다는 리뷰가 반복됩니다.</p>
                   </article>
 
                   <article class="review-row">
                     <div class="review-row-top">
-                      <strong>테이블 간격이 좁아 대화 소음이 있음</strong>
-                      <span class="tag tag-blue">소음</span>
+                      <strong id="review2-title">테이블 간격이 좁아 대화 소음이 있음</strong>
+                      <span class="tag tag-blue" id="review2-tag">소음</span>
                     </div>
-                    <p>조용한 식사를 기대하면 저녁 피크 시간은 피하는 편이 낫다는 의견이 많습니다.</p>
+                    <p id="review2-body">조용한 식사를 기대하면 저녁 피크 시간은 피하는 편이 낫다는 의견이 많습니다.</p>
                   </article>
 
                   <article class="review-row">
                     <div class="review-row-top">
-                      <strong>음식은 빠르게 나오지만 좌석 회전이 빠름</strong>
-                      <span class="tag tag-green">요약</span>
+                      <strong id="review3-title">음식은 빠르게 나오지만 좌석 회전이 빠름</strong>
+                      <span class="tag tag-green" id="review3-tag">요약</span>
                     </div>
-                    <p>혼잡 시간에는 오래 머물기보다 빠르게 식사하고 나오는 장소라는 평가가 많습니다.</p>
+                    <p id="review3-body">혼잡 시간에는 오래 머물기보다 빠르게 식사하고 나오는 장소라는 평가가 많습니다.</p>
                   </article>
                 </div>
               </div>
@@ -1252,12 +1259,60 @@
           </p>
           <div class="hero-actions">
             <a href="#" class="button button-primary">서비스 소개 받기</a>
-            <a href="#problem" class="button button-secondary">핵심 다시 보기</a>
+            <a href="#features" class="button button-secondary">핵심 다시 보기</a>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    (() => {
+      const pins = Array.from(document.querySelectorAll(".map-pin"));
+      const fields = {
+        place: document.getElementById("place-name"),
+        meta: document.getElementById("place-meta"),
+        rating: document.getElementById("place-rating"),
+        review1Title: document.getElementById("review1-title"),
+        review1Tag: document.getElementById("review1-tag"),
+        review1Body: document.getElementById("review1-body"),
+        review2Title: document.getElementById("review2-title"),
+        review2Tag: document.getElementById("review2-tag"),
+        review2Body: document.getElementById("review2-body"),
+        review3Title: document.getElementById("review3-title"),
+        review3Tag: document.getElementById("review3-tag"),
+        review3Body: document.getElementById("review3-body")
+      };
+
+      if (!pins.length) return;
+
+      const updateTag = (element, text, className) => {
+        element.textContent = text;
+        element.className = `tag ${className}`;
+      };
+
+      const applyPlace = (pin) => {
+        const data = pin.dataset;
+        fields.place.textContent = data.place;
+        fields.meta.textContent = data.meta;
+        fields.rating.textContent = data.rating;
+        fields.review1Title.textContent = data.review1Title;
+        updateTag(fields.review1Tag, data.review1Tag, data.review1TagClass);
+        fields.review1Body.textContent = data.review1Body;
+        fields.review2Title.textContent = data.review2Title;
+        updateTag(fields.review2Tag, data.review2Tag, data.review2TagClass);
+        fields.review2Body.textContent = data.review2Body;
+        fields.review3Title.textContent = data.review3Title;
+        updateTag(fields.review3Tag, data.review3Tag, data.review3TagClass);
+        fields.review3Body.textContent = data.review3Body;
+        pins.forEach((item) => item.classList.toggle("is-active", item === pin));
+      };
+
+      pins.forEach((pin) => {
+        pin.addEventListener("click", () => applyPlace(pin));
+      });
+    })();
+  </script>
 
   <footer>
     © 2026 후일담. 실패를 줄이는 지도 리뷰 플랫폼.
